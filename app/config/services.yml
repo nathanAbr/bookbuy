@@ -36,12 +36,16 @@ services:
 
     user_service:
         class: AppBundle\Service\UserService
-        arguments: ["@=service('doctrine.orm.entity_manager').getRepository('AppBundle:User')"]
+        arguments: ["@=service('doctrine.orm.entity_manager')"]
 
     product_type_service:
-            class: AppBundle\Service\ProductTypeService
-            arguments: ["@=service('doctrine.orm.entity_manager').getRepository('AppBundle:ProductType')"]
+        class: AppBundle\Service\ProductTypeService
+        arguments: ["@=service('doctrine.orm.entity_manager')"]
 
     product_service:
-                class: AppBundle\Service\ProductService
-                arguments: ["@=service('doctrine.orm.entity_manager').getRepository('AppBundle:Product')"]
+        class: AppBundle\Service\ProductService
+        arguments: ["@=service('doctrine.orm.entity_manager')"]
+
+    cart_service:
+        class: AppBundle\Service\CartService
+        arguments: ["@=service('doctrine.orm.entity_manager')"]

@@ -8,7 +8,7 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Repository\UserRepository;
+use AppBundle\Entity\User;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -17,10 +17,10 @@ class UserService
     private $entityManager;
     private $repository;
 
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $repository)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->repository = $repository;
+        $this->repository = $this->entityManager->getRepository(User::class);
     }
 
     public function add($user){

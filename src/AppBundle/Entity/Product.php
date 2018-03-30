@@ -176,7 +176,7 @@ class Product
      *
      * @return Product
      */
-    public function setProductType(\AppBundle\Entity\ProductType $productType = null)
+    public function setProductType(\AppBundle\Entity\ProductType $productType)
     {
         $this->productType = $productType;
 

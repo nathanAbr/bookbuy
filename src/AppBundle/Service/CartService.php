@@ -9,15 +9,19 @@
 namespace AppBundle\Service;
 
 
+use AppBundle\Entity\Cart;
+use Doctrine\DBAL\DBALException;
+use Doctrine\ORM\EntityManagerInterface;
+
 class CartService
 {
     private $entityManager;
     private $repository;
 
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $repository)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->repository = $repository;
+        $this->repository = $this->entityManager->getRepository(Cart::class);
     }
 
     public function add($cart){
@@ -25,7 +29,7 @@ class CartService
             $this->entityManager->persist($cart);
             $this->entityManager->flush();
         } catch (DBALException $e){
-
+            return $e->getMessage();
         }
     }
 

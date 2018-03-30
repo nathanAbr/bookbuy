@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product type : {{ product.label }}</h1>
+    <ul>
+        {% for product in product.getProducts %}
+            <li>Name: {{ product.label }} || Price: {{ product.price }} € || Quantity : {{ product.quantity }} || <a href="/cart/add/{{ product.label }}">add</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

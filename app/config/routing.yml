@@ -1,3 +1,31 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+show_cart:
+    path: '/{username}/cart'
+    defaults: {_controller: AppBundle:Cart:show}
+
+create_user:
+    path: '/create/user'
+    defaults: {_controller: AppBundle:User:add}
+
+create_product:
+    path: '/create/product'
+    defaults: {_controller: AppBundle:Product:add}
+
+create_product_type:
+    path: '/create/product_type'
+    defaults: {_controller: AppBundle:ProductType:add}
+
+connect_user:
+    path: '/connect'
+    defaults: {_controller: AppBundle:User:connect}
+
+show_product:
+    path: '/{productType}/products'
+    defaults: {_controller: AppBundle:ProductType:show}
+
+add_product_cart:
+    path: '/cart/add/{product}'
+    defaults: {_controller: AppBundle:Cart:add}

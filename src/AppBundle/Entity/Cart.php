@@ -31,14 +31,14 @@ class Cart
     /**
      * @var array
      *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="carts")
+     * @ORM\ManyToMany(targetEntity="Product", cascade={"persist"}, mappedBy="carts")
      */
     private $products;
 
     /**
      * @var array
      *
-     * @ORM\OneToOne(targetEntity="User", mappedBy="cart")
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist"}, mappedBy="cart")
      */
     private $user;
 

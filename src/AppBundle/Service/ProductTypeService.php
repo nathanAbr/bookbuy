@@ -9,17 +9,19 @@
 namespace AppBundle\Service;
 
 
+use AppBundle\Entity\ProductType;
 use Doctrine\DBAL\DBALException;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ProductTypeService
 {
     private $entityManager;
     private $repository;
 
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $repository)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->repository = $repository;
+        $this->repository = $this->entityManager->getRepository(ProductType::class);
     }
 
     public function add($productType){
@@ -36,7 +38,7 @@ class ProductTypeService
     }
 
     public function find($label){
-        return $this->repository->findOneBy(array('username'=>$label));
+        return $this->repository->findOneBy(array('label'=>$label));
     }
 
     public function findAll(){
